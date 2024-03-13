@@ -1,35 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrcmp.c                                       :+:      :+:    :+:   */
+/*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sunmac <sunmac@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/13 09:27:55 by hlee-sun          #+#    #+#             */
-/*   Updated: 2024/03/13 23:41:46 by sunmac           ###   ########.fr       */
+/*   Created: 2024/03/13 10:36:18 by hlee-sun          #+#    #+#             */
+/*   Updated: 2024/03/14 00:00:37 by sunmac           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+# ifndef SO_LONG_H
+# define SO_LONG_H
 
-int	ft_strrcmp(char *s1, char *s2)
-{
-	int	i;
-	int	j;
+# include <stdlib.h>
+# include <fcntl.h>
+# include <unistd.h>
+# include "./Libft/libft.h" 
 
-	i = 0;
-	j = ft_strlen(s1) - ft_strlen(s2);
-	if ( j < 0 )
-		return (1);
-	while (s1[j] == s2[i] && s1[j] != '\0')
-	{
-		if (s1[j] != s2[i])
-			return (s1[j] - s2[i]);
-		i++;
-		j++;
-	}
-	if (s1[j] == s2[i])
-		return (0);
-	else
-		return (s1[j] - s2[i]);
-}
+# ifndef BUFFER_SIZE
+# define BUFFER_SIZE
+
+// typedef	struct	s_map
+// {
+// 	int	fd;
+// 	int	size;
+// 	int	len;
+// }	t_map;
+
+char	ft_strcpy(char *dest, char *src);
+void    print_error(char *str);
+
+#endif

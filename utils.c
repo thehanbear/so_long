@@ -1,35 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrcmp.c                                       :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sunmac <sunmac@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/13 09:27:55 by hlee-sun          #+#    #+#             */
-/*   Updated: 2024/03/13 23:41:46 by sunmac           ###   ########.fr       */
+/*   Created: 2024/03/13 15:08:24 by hlee-sun          #+#    #+#             */
+/*   Updated: 2024/03/14 00:06:01 by sunmac           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "so_long.h"
 
-int	ft_strrcmp(char *s1, char *s2)
+void	print_error(char *str)
+{
+	write(2, "Error\n", 6);
+	write(2, str, ft_strlen(str));
+	write(2, "\n", 1);
+	exit (1);
+}
+void	*ft_free(char **str)
+{
+	free(*str);
+	*str = 0;
+	return (0);
+}
+
+char	*check_map(char *str)
+{
+	if (!str)
+	{
+		str
+	}
+}
+
+char	ft_strcpy(char *dest, char *src)
 {
 	int	i;
-	int	j;
-
+	
 	i = 0;
-	j = ft_strlen(s1) - ft_strlen(s2);
-	if ( j < 0 )
-		return (1);
-	while (s1[j] == s2[i] && s1[j] != '\0')
+	while (src[i] != '\0')
 	{
-		if (s1[j] != s2[i])
-			return (s1[j] - s2[i]);
+		dest[i] = src[i];
 		i++;
-		j++;
 	}
-	if (s1[j] == s2[i])
-		return (0);
-	else
-		return (s1[j] - s2[i]);
+	dest[i] = '\0';
+	return (dest);
 }
