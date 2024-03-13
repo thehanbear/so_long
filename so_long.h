@@ -6,7 +6,7 @@
 /*   By: sunmac <sunmac@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 10:36:18 by hlee-sun          #+#    #+#             */
-/*   Updated: 2024/03/14 00:00:37 by sunmac           ###   ########.fr       */
+/*   Updated: 2024/03/14 00:30:53 by sunmac           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,15 @@
 # ifndef BUFFER_SIZE
 # define BUFFER_SIZE
 
-// typedef	struct	s_map
-// {
-// 	int	fd;
-// 	int	size;
-// 	int	len;
-// }	t_map;
+
+typedef	struct  s_game
+{
+    char **map;
+ 	int	nx;
+ 	int	ny;
+}	t_game;
+
+// map[y][x]
 
 char	ft_strcpy(char *dest, char *src);
 void    print_error(char *str);
