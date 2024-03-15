@@ -12,27 +12,6 @@
 
 #include "so_long.h"
 
-// // # ifndef SO_LONG_H
-// // # define SO_LONG_H
-
-// # include <stdlib.h>
-// # include <fcntl.h>
-// # include <unistd.h>
-// # include "./Libft/libft.h" 
-// // # include "./MLX42/MLX42.h"
-
-// # include <stdio.h>
-
-// typedef struct	s_game
-// {
-// 	char 	**map;
-// 	int		width;
-// 	int		height;
-// 	int		move;
-// 	char	*first_line;
-// 	char	*lines;
-// }	t_game;
-
 int	verify_map_name(const char *file_name, const char *ending)
 {
 	int	i;
