@@ -4,9 +4,12 @@ LIBFT = ./libft/libft.a
 
 MLX42 = ./MLX42/build/libmlx42.a
 
-SRCS = main.c \ 
+SRCS = main.c  \
+	about_map.c \
 
-CFLAGS = -g -Wall -Wextra -Werror
+HEADER = so_long.h
+
+CFLAGS = -Wall -Wextra -Werror -g
 
 MLX42FLAGS = -Iinclude -lglfw -L"/Users/$(USER)/.brew/opt/glfw/lib/"
 
@@ -27,6 +30,7 @@ clean:
 	make clean -C libft
 	make clean -C MLX42/build
 	rm -rf *.dSYM
+	# rm -rf *.DS_Store
 
 fclean: clean
 	rm -f ${NAME} ${NAME_BONUS}
