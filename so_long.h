@@ -1,14 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: sunmac <sunmac@student.42.fr>              +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/13 10:36:18 by hlee-sun          #+#    #+#             */
-/*   Updated: 2024/03/14 00:30:53 by sunmac           ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
 
 # ifndef SO_LONG_H
 # define SO_LONG_H
@@ -17,21 +6,30 @@
 # include <fcntl.h>
 # include <unistd.h>
 # include "./Libft/libft.h" 
+# include "./MLX42/include/MLX42/MLX42.h"
 
-# ifndef BUFFER_SIZE
-# define BUFFER_SIZE
+# include <stdio.h>
 
-
-typedef	struct  s_game
+typedef struct	s_game
 {
-    char **map;
- 	int	nx;
- 	int	ny;
+	char 	**map;
+	int		width;
+	int		height;
+	int		move;
+	char	*lines;
 }	t_game;
 
-// map[y][x]
+typedef struct	s_map
+{
+	int	empty;
+	int	wall;
+	int	collectible;
+	int	exit;
+	int	player;
+}	t_map;
 
-char	ft_strcpy(char *dest, char *src);
-void    print_error(char *str);
+int		verify_map_name(const char *file_name, const char *ending);
+void	*read_map(char *map, t_game *game);
+int		main(int argc, char **argv);
 
 #endif

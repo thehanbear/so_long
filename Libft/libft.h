@@ -18,6 +18,10 @@
 # include <stdlib.h>
 # include <limits.h>
 
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 42
+# endif
+
 typedef struct s_list
 {
 	void			*content;
@@ -67,6 +71,12 @@ void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstnew(void *content);
 t_list	*ft_lstlast(t_list *lst);
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
-int	ft_strrcmp(char *s1, char *s2);
+int		ft_strrcmp(char *s1, char *s2);
+char	*read_and_save(int fd, char *read_buffer);
+char	*extract_line(char *read_buffer);
+char	*get_remainder(char *read_buffer);
+char	*get_next_line(int fd);
+char	*check_string(char *str);
+char	*ft_free(char **str);
 
 #endif
