@@ -34,7 +34,11 @@ SRCS = ft_isalpha.c \
 		ft_itoa.c \
 		ft_strmapi.c \
 		ft_striteri.c \
-		ft_strrcmp.c
+		ft_strrcmp.c \
+		get_next_line.c \
+		get_next_line_utils.c \
+		get_next_line_bonus.c \
+		get_next_line_utils_bonus.c 
 
 SRCS_BONUS = ft_lstnew_bonus.c \
 			 ft_lstadd_front_bonus.c \
