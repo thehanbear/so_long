@@ -4,8 +4,7 @@ LIBFT = ./libft/libft.a
 
 MLX42 = ./MLX42/build/libmlx42.a
 
-SRCS = main.c  \
-	about_map.c \
+SRCS = main.c about_map.c \
 
 HEADER = so_long.h
 
@@ -30,7 +29,8 @@ clean:
 	make clean -C libft
 	make clean -C MLX42/build
 	rm -rf *.dSYM
-	# rm -rf *.DS_Store
+	rm -rf *.DS_Store
+	rm -rf *.vscode
 
 fclean: clean
 	rm -f ${NAME} ${NAME_BONUS}

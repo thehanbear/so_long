@@ -6,7 +6,7 @@
 /*   By: hlee-sun <hlee-sun@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 17:47:33 by hlee-sun          #+#    #+#             */
-/*   Updated: 2023/11/23 12:58:31 by hlee-sun         ###   ########.fr       */
+/*   Updated: 2024/03/14 12:25:17 by hlee-sun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,7 @@ void	ft_putstr_fd(char *s, int fd)
 	{
 		while (s[i] != '\0')
 		{
-			write(fd, s, 1);
-			s++;
+			write(fd, &s[i++], 1);
 		}
 	}
 }
