@@ -125,7 +125,7 @@ If you are using Apple Silicon (M1 chip or later), note that the Homebrew instal
 You may want to update your shell configuration file. For Zsh users (default shell on newer macOS versions):
 ```bash
 nano ~/.zshrc
-export LIBRARY_PATH=/users/hlee-sun/lib
+export LIBRARY_PATH=/usr/local/lib
 ```
 Restart your shell session or restart your terminal for the changes to take effect.
 
