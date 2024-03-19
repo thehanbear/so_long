@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   about_map_utils.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hlee-sun <hlee-sun@student.hive.fi>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/19 14:09:57 by hlee-sun          #+#    #+#             */
+/*   Updated: 2024/03/19 14:35:51 by hlee-sun         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
 void check_map (t_game *game, int y, int x)
@@ -46,6 +58,7 @@ void check_walls (t_game *game)
 	}
 }
 
+
 void	is_it_rectangle(t_game *game)
 {
 	int	i;
@@ -84,26 +97,6 @@ void	valid_path(t_game *game, int y, int x)
 	if (game->check[y][x - 1] != '1')
 		valid_path (game, y, x - 1);
 }
-
-// void	find_positions(t_game *game)
-// {
-// 	int	x;
-// 	int	y;
-
-// 	y = -1;
-// 	while (++y < game->height)
-// 	{
-// 		x = -1;
-// 		while (++x < game->width)
-// 		{
-// 			if (game->map[y][x] == 'P')
-// 			{
-// 				game ->P_x = x;
-// 				game->P_y = y;
-// 			}
-// 		}
-// 	}
-// }
 
 void	find_positions(t_game *game)
 {
