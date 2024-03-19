@@ -6,7 +6,8 @@ MLX42 = ./MLX42/build/libmlx42.a
 
 SRCS = main.c  \
 	about_map.c \
-	utils.c
+	utils.c \
+	about_map_utils.c 
 
 HEADER = so_long.h
 
