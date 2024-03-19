@@ -1,13 +1,23 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: hlee-sun <hlee-sun@student.hive.fi>        +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/03/19 14:09:24 by hlee-sun          #+#    #+#              #
+#    Updated: 2024/03/19 14:36:43 by hlee-sun         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME = so_long
 
 LIBFT = ./libft/libft.a
 
 MLX42 = ./MLX42/build/libmlx42.a
 
-SRCS = main.c  \
-	about_map.c \
-	utils.c \
-	about_map_utils.c 
+SRCS = main.c about_map.c about_map_utils.c \
+		utils.c 
 
 HEADER = so_long.h
 
