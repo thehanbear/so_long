@@ -6,7 +6,7 @@
 /*   By: hlee-sun <hlee-sun@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 09:55:07 by hlee-sun          #+#    #+#             */
-/*   Updated: 2024/03/19 14:36:09 by hlee-sun         ###   ########.fr       */
+/*   Updated: 2024/03/19 15:06:21 by hlee-sun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,47 +41,21 @@ void	read_map(int fd, t_game *game)
 
 void	get_the_lines(t_game *game)
 {
-	int i;
+	int	i;
 
 	i = 0;
-	game->height = 1;
+	game->hei = 1;
 	while (game->lines[i])
 	{
 		if (game->lines[i] == '\n')
-			game->height++;
+			game->hei++;
 		i++;
 	}
 	game->map = ft_split(game->lines, '\n');
-	game->width = ft_strlen(game->map[0]);
+	game->wid = ft_strlen(game->map[0]);
 }
 
-// void	read_map(char *file, t_game *game)
-// {
-// 	int		fd;
-// 	char	*line;
-// 	fd = open(file, O_RDONLY);
-// 	if (fd <= 0)
-// 		print_error(1);
-// 	line = get_next_line (fd);
-// 	game->height = 0;
-// 	game->width = ft_strlen(line) - 1;
-// 	game->lines = ft_strdup(line);
-// 	free(line);
-// 	while (line)
-// 	{
-// 		game->height++;
-// 		line = get_next_line (fd);
-// 		if (line)
-// 		{
-// 			game->lines = ft_strjoin(game->lines, line);
-// 		}
-// 	}
-// 	game->map = ft_split(game->lines, '\n');
-// 	free(line);
-// 	close (fd);
-// }
-
-void	validate_map (t_game *game)
+void	validate_map(t_game *game)
 {
 	int	y;
 	int	x;
@@ -95,7 +69,7 @@ void	validate_map (t_game *game)
 	check_map (game, y, x);
 	copy_map(game);
 	find_positions(game);
-	valid_path(game, game->P_y, game->P_x);
+	valid_path(game, game->p_y, game->p_x);
 	if (game->validity != 1)
 		print_error (9);
 }
@@ -128,10 +102,10 @@ void copy_map(t_game *game)
 	char **temp;
 
 	i = 0;
-	temp = malloc(game->height * sizeof(char *));
+	temp = malloc(game->hei * sizeof(char *));
 	if (!temp)
 		print_error (8);
-	while(i < game->height)
+	while(i < game->hei)
 	{
 		temp[i]= strdup(game->map[i]);
 			i++;
