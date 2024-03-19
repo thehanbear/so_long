@@ -29,7 +29,7 @@ clean:
 	make clean -C libft
 	make clean -C MLX42/build
 	rm -rf *.dSYM
-	# rm -rf *.DS_Store
+	rm -rf *.DS_Store
 
 fclean: clean
 	rm -f ${NAME} ${NAME_BONUS}
