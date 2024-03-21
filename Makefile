@@ -17,7 +17,7 @@ LIBFT = ./libft/libft.a
 MLX42 = ./MLX42/build/libmlx42.a
 
 SRCS = main.c about_map.c about_map_utils.c \
-		utils.c 
+		utils.c about_error_free.c \
 
 HEADER = so_long.h
 

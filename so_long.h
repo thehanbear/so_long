@@ -59,8 +59,8 @@ void	is_it_rectangle(t_game *game);
 void	valid_path(t_game *game, int y, int x);
 void	init_param(t_game *game);
 void	find_positions(t_game *game);
-void	copy_map(t_game *game);
 void	free_game(t_game *game);
 void	get_the_lines(t_game *game);
+char	*strjoin_free(char *s1, char *s2);
 
 #endif

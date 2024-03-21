@@ -25,7 +25,7 @@ int main(int argc, char **argv)
     read_map(fd, &game);
     close (fd);
     validate_map(&game);
-    //free_game(&game);
+    free_game(&game);
     return (0);
 }
 
