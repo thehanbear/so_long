@@ -74,9 +74,8 @@ void	is_it_rectangle(t_game *game)
 	if (i != game->hei)
 		print_error (4);
 	len = ft_strlen(game->lines);
-	if (game->lines[len -1] == '\n')
+	if (game->lines[len - 1] == '\n')
 		print_error (4);
-	free(game->lines);
 }
 
 void	valid_path(t_game *game, int y, int x)

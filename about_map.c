@@ -12,31 +12,33 @@
 
 #include "so_long.h"
 
-void	read_map(int fd, t_game *game)
+void    read_map(int fd, t_game *game)
 {
-	int		read_byte;
-	char	*temp;
-	char	*line;
+    int     read_byte;
+    char    *temp;
+    char    *line;
 
-	if (fd < 0 || BUFFER_SIZE <= 0 || read (fd, 0, 0) < 0)
-		print_error(1);
-	line = malloc(sizeof(char) * (BUFFER_SIZE + 1));
-	read_byte = read(fd, line, BUFFER_SIZE);
-	if (read_byte == -1)
-		read_error_free(line);
-	line[read_byte] = '\0';
-	while (read_byte == BUFFER_SIZE)
-	{
-		temp = malloc(sizeof(char) * (BUFFER_SIZE + 1));
-		read_byte = read(fd, temp, BUFFER_SIZE);
-		if (read_byte == -1)
-			read_error_free(temp);
-		temp[read_byte] = '\0';
-		line = ft_strjoin(line, temp);
-		free(temp);
-	}
-	game->lines = ft_strdup(line);
-	get_the_lines(game);
+    if (fd < 0 || BUFFER_SIZE <= 0 || read (fd, 0, 0) < 0)
+        print_error(1);
+	line = malloc(sizeof(char));
+	if (!line)
+		print_error(8);
+	line[0] = '\0';
+	read_byte = BUFFER_SIZE;
+    while (read_byte == BUFFER_SIZE)
+    {
+        temp = malloc(sizeof(char) * (BUFFER_SIZE + 1));
+        if (!temp)
+            print_error(8);
+        read_byte = read(fd, temp, BUFFER_SIZE);
+        if (read_byte == -1)
+            read_error_free(temp);
+        temp[read_byte] = '\0';
+        line = strjoin_free(line, temp);
+    }
+    game->lines = ft_strdup(line);
+	free(line);
+    get_the_lines(game);
 }
 
 void	get_the_lines(t_game *game)
@@ -67,7 +69,7 @@ void	validate_map(t_game *game)
 	is_it_rectangle(game);
 	check_walls(game);
 	check_map (game, y, x);
-	copy_map(game);
+	game->check = ft_split(game->lines, '\n');
 	find_positions(game);
 	valid_path(game, game->p_y, game->p_x);
 	if (game->validity != 1)
@@ -94,21 +96,4 @@ void	verify_map_name(const char *file_name, const char *ending)
 		i++;
 		len++;
 	}
-}
-
-void copy_map(t_game *game)
-{
-	int	i;
-	char **temp;
-
-	i = 0;
-	temp = malloc(game->hei * sizeof(char *));
-	if (!temp)
-		print_error (8);
-	while(i < game->hei)
-	{
-		temp[i]= strdup(game->map[i]);
-			i++;
-	}
-	game->check = temp;
 }
