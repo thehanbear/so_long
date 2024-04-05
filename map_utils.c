@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   about_map_utils.c                                  :+:      :+:    :+:   */
+/*   map_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hlee-sun <hlee-sun@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/19 14:09:57 by hlee-sun          #+#    #+#             */
-/*   Updated: 2024/03/19 15:07:21 by hlee-sun         ###   ########.fr       */
+/*   Created: 2024/04/02 14:28:25 by hlee-sun          #+#    #+#             */
+/*   Updated: 2024/04/03 17:52:02 by hlee-sun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 void	check_map(t_game *game, int y, int x)
 {
 	y = 0;
-	while (y < game->hei)
+	while (y < game->h)
 	{
 		x = 0;
-		while (x < game->wid)
+		while (x < game->w)
 		{
 			if (game->map[y][x] == 'P')
 				game->np ++;
@@ -42,12 +42,12 @@ void	check_walls(t_game *game)
 	int	x;
 
 	y = 0;
-	while (y < game->hei)
+	while (y < game->h)
 	{
 		x = 0;
-		while (x < game->wid)
+		while (x < game->w)
 		{
-			if (y == 0 || y == game->hei - 1 || x == 0 || x == game->wid - 1)
+			if (y == 0 || y == game->h - 1 || x == 0 || x == game->w - 1)
 			{
 				if (game->map[y][x] != '1')
 					print_error(5);
@@ -58,7 +58,6 @@ void	check_walls(t_game *game)
 	}
 }
 
-
 void	is_it_rectangle(t_game *game)
 {
 	int	i;
@@ -67,12 +66,14 @@ void	is_it_rectangle(t_game *game)
 	i = 0;
 	while (game->map[i])
 	{
-		if (ft_strlen(game->map[i]) != (size_t)game->wid)
+		if (ft_strlen(game->map[i]) != ((size_t)game->w))
 			print_error (3);
 		i++;
 	}
-	if (i != game->hei)
+	if (i != game->h)
 		print_error (4);
+	if (game->h > 400 || game->w > 800)
+		print_error (10);
 	len = ft_strlen(game->lines);
 	if (game->lines[len - 1] == '\n')
 		print_error (4);
@@ -80,20 +81,22 @@ void	is_it_rectangle(t_game *game)
 
 void	valid_path(t_game *game, int y, int x)
 {
-	if (game->check[y][x] == 'E')
-		game->exit++;
+	if (game->check[y + 1][x] == 'E' || game->check[y - 1][x] == 'E')
+		game->exit = 1;
+	if (game->check[y][x + 1] == 'E' || game->check[y][x - 1] == 'E')
+		game->exit = 1;
 	if (game->check[y][x] == 'C')
 		game->c_collected++;
 	if (game->exit == 1 && game->nc == game->c_collected)
 		game->validity = 1;
 	game->check[y][x] = '1';
-	if (game->check[y + 1][x] != '1')
+	if (game->check[y + 1][x] != '1' && game->check[y + 1][x] != 'E')
 		valid_path (game, y + 1, x);
-	if (game->check[y - 1][x] != '1')
+	if (game->check[y - 1][x] != '1' && game->check[y - 1][x] != 'E')
 		valid_path (game, y - 1, x);
-	if (game->check[y][x + 1] != '1')
+	if (game->check[y][x + 1] != '1' && game->check[y][x + 1] != 'E')
 		valid_path (game, y, x + 1);
-	if (game->check[y][x - 1] != '1')
+	if (game->check[y][x - 1] != '1' && game->check[y][x - 1] != 'E')
 		valid_path (game, y, x - 1);
 }
 
@@ -103,15 +106,15 @@ void	find_positions(t_game *game)
 	int	y;
 
 	y = 0;
-	while (y < game->hei)
+	while (y < game->h)
 	{
 		x = 0;
-		while (x < game->wid)
+		while (x < game->w)
 		{
 			if (game->map[y][x] == 'P')
 			{
-				game->p_x = x;
-				game->p_y = y;
+				game->px = x;
+				game->py = y;
 			}
 			x++;
 		}
