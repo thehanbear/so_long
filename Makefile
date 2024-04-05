@@ -12,41 +12,57 @@
 
 NAME = so_long
 
+NAME_BONUS = so_long_bonus
+
 LIBFT = ./libft/libft.a
 
 MLX42 = ./MLX42/build/libmlx42.a
 
-SRCS = main.c about_map.c about_map_utils.c \
-		utils.c about_error_free.c \
+MLX42FLAGS = -Iinclude -lglfw -L"/Users/$(USER)/.brew/opt/glfw/lib/"
 
-HEADER = so_long.h
+SRCS = main.c map.c map_utils.c \
+		utils.c error_free.c mlx.c \
+		moves.c player.c
+
+SRCS_BONUS = ./bonus/main_bonus.c ./bonus/map_bonus.c \
+			./bonus/error_free_bonus.c ./bonus/player_bonus.c \
+            ./bonus/utils_bonus.c ./bonus/moves_bonus.c \
+			./bonus/map_utils_bonus.c ./bonus/enemy_bonus.c \
+			./bonus/mlx_bonus.c 
 
 CFLAGS = -Wall -Wextra -Werror -g
 
-all: ${NAME}
+all: $(NAME)
 
-${NAME}: ${SRCS} $(LIBFT) $(MLX42)
-	cc $(CFLAGS) $^ -framework Cocoa -framework OpenGL -framework IOKit -o $@ $(LIBFT) $(MLX42)
+$(NAME): $(SRCS) $(LIBFT) $(MLX42)
+	@cc $(CFLAGS) $^ -o $@ $(LIBFT) $(MLX42) $(MLX42FLAGS)
+
+bonus: $(NAME_BONUS)
+
+$(NAME_BONUS): $(SRCS_BONUS) $(LIBFT) $(MLX42)
+	@cc $(CFLAGS) $^ -o $@ $(LIBFT) $(MLX42) $(MLX42FLAGS)
 
 $(LIBFT):
-	make -C libft/
+	@make -C libft/
 
-$(MLX42):
-	cd MLX42 && cmake -B build
-	cd MLX42 && cmake --build build -j4
-	make -C MLX42/build -j4
+$(MLX42): 
+	@cd MLX42 && cmake -B build
+	@cd MLX42 && cmake --build build -j4
+	@make -C MLX42/build -j4
 
 clean:
-	make clean -C libft
-	make clean -C MLX42/build
-	rm -rf *.dSYM
-	rm -rf *.DS_Store
+	@make clean -C libft
+	@make clean -C MLX42/build
+	@rm -rf *.dSYM
+	@rm -rf *.DS_Store
 
 fclean: clean
-	rm -f ${NAME} ${NAME_BONUS}
-	make fclean -C libft
-	make clean -C MLX42/build
+	@rm -f $(NAME) $(NAME_BONUS)
+	@make fclean -C libft
+	@make clean -C MLX42/build
 
 re: fclean all
 
-.PHONY: all clean fclean re
+bonus_re: fclean bonus
+
+.PHONY: all clean fclean bonus re bonus_re
