@@ -26,3 +26,8 @@ make bonus  # builds the bonus version
 ```
 
 ---
+
+![Win Screen](assets/map3.gif)
+
+
+## Thanks :) 
