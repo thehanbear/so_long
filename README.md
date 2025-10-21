@@ -49,7 +49,6 @@ ESC — Quit
   <img src="assets/map3.gif" width="500"/>
 </p>
 
-```
 ## Thanks :)
 ---
 
