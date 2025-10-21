@@ -2,8 +2,10 @@
 
 # so_long
 
-Simple 2D tile-based game.  
-Collect all items and reach the exit while avoiding enemies.
+A simple 2D tile-based game —  
+Help the ninja collect all the ramen,  
+and turn his tanuki friend back to normal before the blue monsters catch you!
+
 
 ---
 
