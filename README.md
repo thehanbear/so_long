@@ -14,9 +14,11 @@ make bonus  # builds the bonus version
 
 ## Screenshots
 
-![Game](assets/map1.gif)  
-![Gameplay](assets/map2.gif)  
-![Lose Screen](assets/map3_lose.gif)
+<img src="assets/map1.gif" width="300"/>
+
+<img src="assets/map2.gif" width="300"/>
+
+<img src="assets/map3_lose.gif" width="300"/>
 
 ### Run (Like this)
 
@@ -27,7 +29,7 @@ make bonus  # builds the bonus version
 
 ---
 
-![Win Screen](assets/map3.gif)
+<img src="assets/map3.gif" width="300"/>
 
 
 ## Thanks :) 
