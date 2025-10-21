@@ -16,7 +16,7 @@ make bonus  # builds the bonus version
 
 ---
 
-## ▶️ Run
+## ▶️ Run (Like this)
 
 ```bash
 ./so_long maps/map1.ber  
@@ -43,17 +43,14 @@ ESC — Quit
   <img src="assets/map3_lose.gif" width="500"/>
 </p>
 
----
+## Enjoy!
 
-## 📁 Project Structure
+<p align="center">
+  <img src="assets/map3.gif" width="500"/>
+</p>
 
 ```
-maps/           # .ber map files  
-assets/         # screenshots/GIFs for README  
-libft/          # custom libft  
-MLX42/          # graphics lib
-```
-
+## Thanks :)
 ---
 
 </div>
